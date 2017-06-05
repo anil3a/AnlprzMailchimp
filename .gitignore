@@ -1,0 +1,26 @@
+/*
+
+## OS generated files ##
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+error_log
+error.log
+
+## Editor Temp files ##
+*~
+*.save
+*.swp
+*.swo
+
+## Server Stuff ##
+
+## Project ##
+!Mailchimp.php
+!subscribemailchimp.php
+!README.md
+!.gitignore
