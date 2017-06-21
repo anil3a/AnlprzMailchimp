@@ -125,8 +125,6 @@ Class Mailchimp {
     
     public function subscribe( $email )
     {
-        if ( empty( $this->mergeFields['NAME'] ) ) throw new \Exception( 'Merge Field NAME is required by default.' );
-        
         if( empty( $this->listId ) ) throw new \Exception( 'Please define List ID before subscribing.' );
 
         if( empty( $this->serverId ) ) throw new \Exception( 'Please defeine Server ID before subscribing.' );
