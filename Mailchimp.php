@@ -39,7 +39,7 @@ Class Mailchimp {
     {
         if( empty( $apiKey ) )
         {
-            throw new Exception( 'Mailchimp API module cannot find your API key by itself, please provide' );
+            throw new \Exception( 'Mailchimp API module cannot find your API key by itself, please provide' );
         }
         $this->apikey = $apiKey;
 
@@ -104,7 +104,7 @@ Class Mailchimp {
      */
     public function setMergeFields ( $field, $value = false )
     {
-        if ( empty( $field ) ) throw new Exception( 'Please set value to begin.' );
+        if ( empty( $field ) ) throw new \Exception( 'Please set value to begin.' );
         
         if ( is_array( $field ) )
         {
@@ -117,7 +117,7 @@ Class Mailchimp {
             $this->mergeFields[ $field ] = $value;
         } else 
         {
-            throw new Exception( 'Syntax Error while saving your Merge Fields.' );
+            throw new \Exception( 'Syntax Error while saving your Merge Fields.' );
         }
         
         return $this;
@@ -125,11 +125,11 @@ Class Mailchimp {
     
     public function subscribe( $email )
     {
-        if ( empty( $this->mergeFields['NAME'] ) ) throw new Exception( 'Merge Field NAME is required by default.' );
+        if ( empty( $this->mergeFields['NAME'] ) ) throw new \Exception( 'Merge Field NAME is required by default.' );
         
-        if( empty( $this->listId ) ) throw new Exception( 'Please define List ID before subscribing.' );
+        if( empty( $this->listId ) ) throw new \Exception( 'Please define List ID before subscribing.' );
 
-        if( empty( $this->serverId ) ) throw new Exception( 'Please defeine Server ID before subscribing.' );
+        if( empty( $this->serverId ) ) throw new \Exception( 'Please defeine Server ID before subscribing.' );
         
         $data = array(
                 'apikey'        => $this->getApikey(),
