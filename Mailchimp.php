@@ -23,9 +23,16 @@ Class Mailchimp {
     private $serverId = null;
     
     // MERGE FIELDS
-    // Locate Merge Feilds: Lists menu > Choose desired List > Settings > List fields and *|MERGE|* tags
+    // Locate Merge Fields: Lists menu > Choose desired List > Settings > List fields and *|MERGE|* tags
     // In your List of Fields Table: This "Put this tag in your content:" Column will have Field key names 
     private $mergeFields = array();
+
+    // GROUP ID
+    // Also referred as Interest
+    // Locate Group Id: Go to https://us14.api.mailchimp.com/playground/
+    // Put in your API key
+    // GOTO => Home -> lists -> 2e086cb547 -> interest-categories -> 04d40a0702 -> interests -> c8ef0de3d3  <= this is ID
+    private $groupId = null;
     
     /**
      * New instance of Mailchimp with Api key, Server Id (optional) and List Id (optional)
@@ -91,6 +98,24 @@ Class Mailchimp {
     public function getServerId ()
     {
         return $this->serverId;
+    }
+
+    /**
+     * Set Server Id
+     * @param string $serverId
+     */
+    public function setGroupId( $groupId )
+    {
+        $this->groupId = $groupId;
+    }
+    
+    /**
+     * Get Server Id
+     * @return string|null
+     */
+    public function getGroupId ()
+    {
+        return $this->groupId;
     }
     
     /**
@@ -159,6 +184,27 @@ Class Mailchimp {
         } catch ( Exception $e ) {
             return $e->getMessage();
         }
+    }
+
+    public function subscribeGroup( $email )
+    {
+        if( empty( $this->listId ) ) throw new \Exception( 'Please define List ID before subscribing.' );
+
+        if( empty( $this->serverId ) ) throw new \Exception( 'Please defeine Server ID before subscribing.' );
+
+        if( empty( $this->groupId ) ) throw new \Exception( 'Please defeine Group ID before subscribing to group/interest.' );
+        
+        $data = array(
+                'apikey'        => $this->getApikey(),
+                'email_address' => $email,
+                'status'        => 'subscribed',
+                'merge_fields'  => $this->mergeFields,
+                'interests'     => array( $this->groupId => true ),
+            );
+        
+        $json_data = json_encode($data);
+
+        return $this->request( 'https://'.$this->getServerId() .'.api.mailchimp.com/3.0/lists/'.$this->getListId().'/members/', $json_data, 10, false  );
     }
 
 }

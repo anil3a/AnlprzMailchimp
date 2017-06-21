@@ -15,7 +15,12 @@ $mailchimp->setMergeFields("NAME", "Megan Fox");
 $mailchimp->setMergeFields("FNAME", "Megan")->setMergeFields( array( "LNAME" => "Fox" ) );
 
 // Run Final Subscription to customer with Email
-$result       = $mailchimp->subscribe( 'myNameTestmantwo@asmex.digital' );
+$result       = $mailchimp->subscribe( 'myNameTestmantwo@yourcompany.digital' );
+
+// For subscribing into certain Groups / interest
+$mailchimp->setGroupId = 'c8ef0de3d3';
+
+$result       = $mailchimp->subscribeGroup( 'myNameTestmantwo@yourcompany.digital' );
 
 
 ?>

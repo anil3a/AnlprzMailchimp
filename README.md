@@ -6,9 +6,11 @@ Mailchimp simple API
 
 There is a sample file that calls Mailchimp and run Subscribe.
 
+Now you can call subscribers to groups/interests as well.
+
 ## Motivation
 
-Really clean and simple Mailchimp api
+Simple Mailchimp API as well as Learning as well.
 
 ## Contributors
 
@@ -16,4 +18,4 @@ Please send me a pull request if you want to extend this module and have crazy t
 
 ## License
 
-I will learn Licensing this soon, so for now, its free to use and can be modified for personal purpose.
+GPL
