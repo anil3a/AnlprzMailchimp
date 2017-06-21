@@ -101,8 +101,8 @@ Class Mailchimp {
     }
 
     /**
-     * Set Server Id
-     * @param string $serverId
+     * Set Group Id
+     * @param string $groupId
      */
     public function setGroupId( $groupId )
     {
@@ -110,7 +110,7 @@ Class Mailchimp {
     }
     
     /**
-     * Get Server Id
+     * Get Group Id
      * @return string|null
      */
     public function getGroupId ()
